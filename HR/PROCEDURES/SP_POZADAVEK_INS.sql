@@ -1,9 +1,4 @@
---------------------------------------------------------
---  DDL for Procedure SP_POZADAVEK_INS
---------------------------------------------------------
-set define off;
-
-  CREATE OR REPLACE PROCEDURE "HR"."SP_POZADAVEK_INS" (
+CREATE OR REPLACE PROCEDURE "HR"."SP_POZADAVEK_INS" (
 I_TYP_POZADAVKU   IN VARCHAR2,
 I_POPIS_POZADAVKU IN VARCHAR2
 )
@@ -30,7 +25,6 @@ BEGIN
   EXCEPTION 
     WHEN NO_DATA_FOUND THEN
       IF v_zalozit_typ THEN
-         null;
         --Zalozeni noveho typu pozadavku
         INSERT INTO HR.POZADAVEK_TYP
         (POZADAVEK_TYP_ID, POZADAVEK_TYP, POPIS_TYPU, DATUM_I)
@@ -60,9 +54,8 @@ BEGIN
 
 EXCEPTION 
    WHEN e_invalid_typ THEN
-     RAISE_APPLICATION_ERROR(-20001, 'Typ zadaneho pozadavku je neplatny!');
+     RAISE_APPLICATION_ERROR(-20011, 'Typ zadaneho pozadavku je neplatny!');
    WHEN OTHERS THEN
      RAISE;
 END SP_POZADAVEK_INS;
-
 /
