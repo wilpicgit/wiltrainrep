@@ -1,0 +1,41 @@
+--------------------------------------------------------
+--  DDL for Table POZADAVKY
+--------------------------------------------------------
+
+  CREATE TABLE "HR"."POZADAVKY" 
+   (	"POZADAVKY_ID" NUMBER, 
+	"POZADAVEK_TYP_ID" NUMBER, 
+	"POZADAVEK_STAV_ID" NUMBER, 
+	"JEDNACI_CISLO" VARCHAR2(50 BYTE), 
+	"POPIS_POZADAVKU" VARCHAR2(1000 BYTE), 
+	"DATUM_UKONCENI" DATE, 
+	"DATUM_I" DATE, 
+	"DATUM_U" DATE, 
+	"UZIV_I" VARCHAR2(30 BYTE), 
+	"UZIV_U" VARCHAR2(30 BYTE)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+ 
+
+   COMMENT ON COLUMN "HR"."POZADAVKY"."POZADAVKY_ID" IS 'Primarni klic tabulky.';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."POZADAVEK_TYP_ID" IS 'Cizi klic na POZADAVEK_TYP.POZADAVEK_TYP_ID';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."POZADAVEK_STAV_ID" IS 'Cizi klic na POZADAVEK_STAV.POZADAVEK_STAV_ID';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."JEDNACI_CISLO" IS 'Unikatni jednaci cislo pozadavku';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."POPIS_POZADAVKU" IS 'Zadani pozadavku';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."DATUM_UKONCENI" IS 'Datum ukonceni pozadavku';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."DATUM_I" IS 'Datum zalozeni pozadavku';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."DATUM_U" IS 'Datum upravy pozadavku.';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."UZIV_I" IS 'DB uzivatel, ktery zaznam vlozil.';
+ 
+   COMMENT ON COLUMN "HR"."POZADAVKY"."UZIV_U" IS 'DB uzivatel, ktery zaznam naposled upravil.';
+ 
+   COMMENT ON TABLE "HR"."POZADAVKY"  IS 'Zadane pozadavky od klienta';
